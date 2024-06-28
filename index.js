@@ -6,6 +6,16 @@ const { Telegraf, Markup } = require('telegraf');
 const { v4: uuidv4 } = require('uuid');  // Para generar IDs únicos
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
+const express = require('express');
+const app = express();
+
+
+const PORT = process.env.PORT
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
 /*********** DECLARACION DE LIBRERIAS (FIN) ***************************************/
 
 // Función para obtener el teclado personalizado
