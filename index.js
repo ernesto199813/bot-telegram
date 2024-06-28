@@ -35,8 +35,18 @@ const taskAndEarnMenu = {
 const users = {};
 const referrals = {};
 let balance_acumulado = 0;
-let balance_cf = 0;
-let balance_bttc = 0;
+
+// Acumulador de Balances de cada variable //
+
+let CF=0;
+let BTTC=0;
+let USDT=0;
+let TRX=0;
+let CT=0;
+let APT=0;
+
+
+
 // Generar un enlace de referido
 const generateReferralLink = (userId) => {
     return `https://t.me/${process.env.BOT_USERNAME}?start=${userId}`;
@@ -102,7 +112,7 @@ bot.hears('Task and Earn', (ctx) => {
     
    "\n\nCanal 2: @boxbttc \n\nCanal 3: @boxtrx \n\nCanal 4: @cryptotigres \n\nCanal 5: @boxusdt1 "  
    */ 
-   "Lista de canales, Gana 0.01$ por unirte a los siguientes canales" ,taskAndEarnMenu
+   "Gana 0.01$ por unirte a los siguientes canales:" ,taskAndEarnMenu
             
     );
         
@@ -173,7 +183,7 @@ bot.hears('ℂ𝕣𝕪𝕡𝕥𝕠 𝕋𝕚𝕘𝕣𝕖𝕤', (ctx) => {
     reply_markup: {
       inline_keyboard: [
         [{ text: 'ℂ𝕣𝕪𝕡𝕥𝕠 𝕋𝕚𝕘𝕣𝕖𝕤', url: 'https://t.me/cryptotigres' }],
-        [{ text: 'Verificar suscripción al canal', callback_data: 'verify_tigres' }]
+        [{ text: 'Verificar suscripción al canal', callback_data: 'verify_tg' }]
       ]
     }
   });
@@ -187,7 +197,7 @@ bot.hears('Apuestas Tigres', (ctx) => {
     reply_markup: {
       inline_keyboard: [
         [{ text: 'Apuestas Tigres', url: 'https://t.me/apuestastigres' }],
-        [{ text: 'Verificar suscripción al canal', callback_data: 'verify_at' }]
+        [{ text: 'Verificar suscripción al canal', callback_data: 'verify_apt' }]
       ]
     }
   });
@@ -214,10 +224,10 @@ bot.action('verify_cf', async (ctx) => {
       const member = await bot.telegram.getChatMember(chatId, userId);
       if (member.status === 'member' || member.status === 'administrator' || member.status === 'creator') {
 
-        if (chatId =='@CF_Estrategias' && balance_cf<=0 ){  
+        if (balance_acumulado<0.06 && CF<=0 ){  
 
         balance_acumulado += 0.01;
-        balance_cf += 1;
+         CF += 1;
         
         ctx.reply('¡Verificado!');
         } else {
@@ -247,10 +257,10 @@ bot.action('verify_bttc', async (ctx) => {
     const member = await bot.telegram.getChatMember(chatId, userId);
     if (member.status === 'member' || member.status === 'administrator' || member.status === 'creator') {
 
-      if (balance_acumulado <0.02 && balance_bttc<=0){  
+      if (balance_acumulado <0.06 && BTTC<=0){  
 
       balance_acumulado += 0.01;
-      balance_bttc += 1;
+      BTTC += 1;
       
       ctx.reply('¡Verificado!');
 
@@ -273,14 +283,150 @@ bot.action('verify_bttc', async (ctx) => {
 //VERIFICAR SUSCRIPCION BOX BTTC (FIN)//
 
 
+//VERIFICAR SUSCRIPCION BOX TRX (INICIO)// 
+bot.action('verify_trx', async (ctx) => {
+  const userId = ctx.from.id;
+  const chatId = '@boxtrx'; // Reemplaza con el ID de tu canal
+  
+  try {
+    const member = await bot.telegram.getChatMember(chatId, userId);
+    if (member.status === 'member' || member.status === 'administrator' || member.status === 'creator') {
+
+      if (balance_acumulado <0.06 && TRX<=0){  
+
+      balance_acumulado += 0.01;
+      TRX += 1;
+      
+      ctx.reply('¡Verificado!');
+
+      } else {
+
+        ctx.reply(`¡Ya eres ${member.status} de este canal!`);
+
+      }
+     
+    } else {
+      ctx.reply('No estás suscrito al canal. Por favor, únete para continuar.');
+    }
+  } catch (error) {
+    
+    ctx.reply('Ocurrió un error al verificar la suscripción. Por favor, inténtalo de nuevo.');
+    
+  }
+});
+
+//VERIFICAR SUSCRIPCION BOX TRX (FIN)//
+
+//VERIFICAR SUSCRIPCION BOX USDT (INICIO)// 
+bot.action('verify_usdt', async (ctx) => {
+  const userId = ctx.from.id;
+  const chatId = '@boxusdt1'; // Reemplaza con el ID de tu canal
+  
+  try {
+    const member = await bot.telegram.getChatMember(chatId, userId);
+    if (member.status === 'member' || member.status === 'administrator' || member.status === 'creator') {
+
+      if (balance_acumulado <0.06 && USDT<=0){  
+
+      balance_acumulado += 0.01;
+      USDT += 1;
+      
+      ctx.reply('¡Verificado!');
+
+      } else {
+
+        ctx.reply(`¡Ya eres ${member.status} de este canal!`);
+
+      }
+     
+    } else {
+      ctx.reply('No estás suscrito al canal. Por favor, únete para continuar.');
+    }
+  } catch (error) {
+    
+    ctx.reply('Ocurrió un error al verificar la suscripción. Por favor, inténtalo de nuevo.');
+    
+  }
+});
+
+//VERIFICAR SUSCRIPCION BOX USDT (FIN)//
+
+
+
+
+//VERIFICAR SUSCRIPCION CRYPTO TIGRES (INICIO)// 
+bot.action('verify_tg', async (ctx) => {
+  const userId = ctx.from.id;
+  const chatId = '@cryptotigres'; // Reemplaza con el ID de tu canal
+  
+  try {
+    const member = await bot.telegram.getChatMember(chatId, userId);
+    if (member.status === 'member' || member.status === 'administrator' || member.status === 'creator') {
+
+      if (balance_acumulado <0.06 && CT<=0){  
+
+      balance_acumulado += 0.01;
+      CT += 1;
+      
+      ctx.reply('¡Verificado!');
+
+      } else {
+
+        ctx.reply(`¡Ya eres ${member.status} de este canal!`);
+
+      }
+     
+    } else {
+      ctx.reply('No estás suscrito al canal. Por favor, únete para continuar.');
+    }
+  } catch (error) {
+    
+    ctx.reply('Ocurrió un error al verificar la suscripción. Por favor, inténtalo de nuevo.');
+    
+  }
+});
+
+//VERIFICAR SUSCRIPCION CRYPTO TIGRES (FIN)//
+
+//VERIFICAR SUSCRIPCION APUESTAS TIGRES (INICIO)// 
+bot.action('verify_apt', async (ctx) => {
+  const userId = ctx.from.id;
+  const chatId = '@apuestastigres'; // Reemplaza con el ID de tu canal
+  
+  try {
+    const member = await bot.telegram.getChatMember(chatId, userId);
+    if (member.status === 'member' || member.status === 'administrator' || member.status === 'creator') {
+
+      if (balance_acumulado <0.06 && APT<=0){  
+
+      balance_acumulado += 0.01;
+      APT+=1;
+      
+      ctx.reply('¡Verificado!');
+
+      } else {
+
+        ctx.reply(`¡Ya eres ${member.status} de este canal!`);
+
+      }
+     
+    } else {
+      ctx.reply('No estás suscrito al canal. Por favor, únete para continuar.');
+    }
+  } catch (error) {
+    
+    ctx.reply('Ocurrió un error al verificar la suscripción. Por favor, inténtalo de nuevo.');
+    
+  }
+});
+
+//VERIFICAR SUSCRIPCION APUESTAS TIGRES (FIN)//
+
+
+
+
 
 
 //ESTRUCTURA DE MI CUENTA (FIN)//
-
-
-
-
-
-
 //LANZAR EL BOT//
 bot.launch();
