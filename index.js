@@ -81,8 +81,8 @@ bot.hears('Volver al menú principal', (ctx) => {
 // //
 
 //ESTRUCTURA DE MI CUENTA (INICIO)//
+/*
 bot.hears('Mi Cuenta', (ctx) => {
-
 ctx.reply(
         
 "Usuario: " +ctx.from.first_name+" "+ ctx.from.last_name+  
@@ -91,6 +91,20 @@ ctx.reply(
 );
     
 });
+*/
+
+bot.hears('Mi Cuenta', (ctx) => {
+  const user = ctx.from;
+
+  const message = `Usuario: ${user.first_name} ${user.last_name}\n\nInvitados: 0\n\nBalance: ${balance_acumulado}`;
+
+  ctx.replyWithPhoto(
+    { url: 'https://img.freepik.com/fotos-premium/identificacion-tarjeta-identificacion_557469-7457.jpg?w=740' }, // Reemplaza con la URL de tu imagen
+    { caption: message }
+  );
+});
+
+
 
 //ESTRUCTURA DE MI CUENTA (FIN)//
 
@@ -122,7 +136,7 @@ bot.hears('Task and Earn', (ctx) => {
     
    "\n\nCanal 2: @boxbttc \n\nCanal 3: @boxtrx \n\nCanal 4: @cryptotigres \n\nCanal 5: @boxusdt1 "  
    */ 
-   "Gana 0.01$ por unirte a los siguientes canales:" ,taskAndEarnMenu
+   "Gana recompensas por unirte a los siguientes canales:" ,taskAndEarnMenu
             
     );
         
@@ -130,6 +144,9 @@ bot.hears('Task and Earn', (ctx) => {
 
 
 //Crypto Finanzas (INICIO)//
+
+
+/*
 bot.hears('𝙲𝙵 (𝙴𝚜𝚝𝚛𝚊𝚝𝚎𝚐𝚒𝚊𝚜)', (ctx) => {
     ctx.reply('Unete a:', {
       reply_markup: {
@@ -140,12 +157,32 @@ bot.hears('𝙲𝙵 (𝙴𝚜𝚝𝚛𝚊𝚝𝚎𝚐𝚒𝚊𝚜)', (ctx) => {
       }
     });
   });
+*/
+
+
+  bot.hears('𝙲𝙵 (𝙴𝚜𝚝𝚛𝚊𝚝𝚎𝚐𝚒𝚊𝚜)', (ctx) => {
+    ctx.replyWithPhoto({ url:' https://img.freepik.com/foto-gratis/burbuja-vidrio-transparente-logotipo-telegram-su-interior-aislado-sobre-fondo-transparente_125540-4152.jpg?t=st=1719638738~exp=1719642338~hmac=8248200a6e9b089f0efb54ae12d67312b6c50bf2e1af6f48601f8c1ca44d1b28&w=996' }, {
+        caption: '',
+        reply_markup: {
+            inline_keyboard: [
+                [{ text: '𝙲𝙵 (𝙴𝚜𝚝𝚛𝚊𝚝𝚎𝚐𝚒𝚊𝚜)', url: 'https://t.me/CF_Estrategias' }],
+                [{ text: 'Verificar suscripción al canal', callback_data: 'verify_cf' }]
+            ]
+        }
+    });
+});
+
+
+
 //Crypto Finanzas (FIN)//
 
 
 //Box BTTC (INICIO)//
 bot.hears('☞ 𝙱𝚘𝚡 𝙱𝚃𝚃𝙲', (ctx) => {
-  ctx.reply('Unete a:', {
+
+  ctx.replyWithPhoto({ url:' https://img.freepik.com/foto-gratis/burbuja-vidrio-transparente-logotipo-telegram-su-interior-aislado-sobre-fondo-transparente_125540-4152.jpg?t=st=1719638738~exp=1719642338~hmac=8248200a6e9b089f0efb54ae12d67312b6c50bf2e1af6f48601f8c1ca44d1b28&w=996' }, {
+    caption: '',
+
     reply_markup: {
       inline_keyboard: [
         [{ text: '☞ 𝙱𝚘𝚡 𝙱𝚃𝚃𝙲', url: 'https://t.me/boxbttc' }],
@@ -159,7 +196,9 @@ bot.hears('☞ 𝙱𝚘𝚡 𝙱𝚃𝚃𝙲', (ctx) => {
 
 //Box TRX (INICIO)//
 bot.hears('☞ 𝙱𝚘𝚡 𝚃𝚁𝚇', (ctx) => {
-  ctx.reply('Unete a:', {
+  ctx.replyWithPhoto({ url:' https://img.freepik.com/foto-gratis/burbuja-vidrio-transparente-logotipo-telegram-su-interior-aislado-sobre-fondo-transparente_125540-4152.jpg?t=st=1719638738~exp=1719642338~hmac=8248200a6e9b089f0efb54ae12d67312b6c50bf2e1af6f48601f8c1ca44d1b28&w=996' }, {
+    caption: '',
+  
     reply_markup: {
       inline_keyboard: [
         [{ text: '☞ 𝙱𝚘𝚡 𝚃𝚁𝚇', url: 'https://t.me/boxtrx' }],
@@ -174,7 +213,9 @@ bot.hears('☞ 𝙱𝚘𝚡 𝚃𝚁𝚇', (ctx) => {
 
 //Box USDT (INICIO)//
 bot.hears('☞ 𝙱𝚘𝚡 𝚄𝚂𝙳𝚃', (ctx) => {
-  ctx.reply('Unete a:', {
+
+  ctx.replyWithPhoto({ url:' https://img.freepik.com/foto-gratis/burbuja-vidrio-transparente-logotipo-telegram-su-interior-aislado-sobre-fondo-transparente_125540-4152.jpg?t=st=1719638738~exp=1719642338~hmac=8248200a6e9b089f0efb54ae12d67312b6c50bf2e1af6f48601f8c1ca44d1b28&w=996' }, {
+    caption: '',
     reply_markup: {
       inline_keyboard: [
         [{ text: '☞ 𝙱𝚘𝚡 𝚄𝚂𝙳𝚃', url: 'https://t.me/boxusdt1' }],
@@ -189,7 +230,9 @@ bot.hears('☞ 𝙱𝚘𝚡 𝚄𝚂𝙳𝚃', (ctx) => {
 
 //Box USDT (INICIO)//
 bot.hears('ℂ𝕣𝕪𝕡𝕥𝕠 𝕋𝕚𝕘𝕣𝕖𝕤', (ctx) => {
-  ctx.reply('Unete a:', {
+  ctx.replyWithPhoto({ url:' https://img.freepik.com/foto-gratis/burbuja-vidrio-transparente-logotipo-telegram-su-interior-aislado-sobre-fondo-transparente_125540-4152.jpg?t=st=1719638738~exp=1719642338~hmac=8248200a6e9b089f0efb54ae12d67312b6c50bf2e1af6f48601f8c1ca44d1b28&w=996' }, {
+    caption: '',
+
     reply_markup: {
       inline_keyboard: [
         [{ text: 'ℂ𝕣𝕪𝕡𝕥𝕠 𝕋𝕚𝕘𝕣𝕖𝕤', url: 'https://t.me/cryptotigres' }],
@@ -203,7 +246,9 @@ bot.hears('ℂ𝕣𝕪𝕡𝕥𝕠 𝕋𝕚𝕘𝕣𝕖𝕤', (ctx) => {
 
 //APUESTAS TIGRES (INICIO)//
 bot.hears('Apuestas Tigres', (ctx) => {
-  ctx.reply('Unete a:', {
+
+  ctx.replyWithPhoto({ url:' https://img.freepik.com/foto-gratis/burbuja-vidrio-transparente-logotipo-telegram-su-interior-aislado-sobre-fondo-transparente_125540-4152.jpg?t=st=1719638738~exp=1719642338~hmac=8248200a6e9b089f0efb54ae12d67312b6c50bf2e1af6f48601f8c1ca44d1b28&w=996' }, {
+    caption: '',
     reply_markup: {
       inline_keyboard: [
         [{ text: 'Apuestas Tigres', url: 'https://t.me/apuestastigres' }],
